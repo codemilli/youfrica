@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import routes from 'routes';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import promiseMiddleware from 'lib/promiseMiddleware';
-import {Provider} from 'react-reudx';
+import {Provider} from 'react-redux';
 import * as reducers from 'reducers';
 import {fromJS} from 'immutable';
 

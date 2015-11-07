@@ -42,7 +42,9 @@ app.use((req, res) => {
                 </head>
                 <body>
                     <div id="react-view">${componentHTML}</div>
-                    <script type="application/javascript" src="/bundle.js"></script>
+                    <script type="text/javascript" src="./bundle.js"></script>
+                    <script type="text/javascript" src="./dist/bundle.js"></script>
+                    <script type="text/javascript" src="./client/bundle.js"></script>
                 </body>
             </html>
         `;
