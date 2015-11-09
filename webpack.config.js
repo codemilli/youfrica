@@ -6,7 +6,7 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: [
-        './index.js'
+        './client.js'
     ],
     output: {
         filename: './static/bundle.js'

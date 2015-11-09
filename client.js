@@ -2,16 +2,17 @@
  * Created by youngmoon on 11/9/15.
  */
 
+import 'babel-core/polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-reudx'
-import App from './containers/App'
+import configureStore from './configureStore'
+import { Provider } from 'react-redux'
+import App from './containers/AsyncApp'
 import RootReducer from './reducers'
 
 const initialState = window.__INITIAL_STATE__
 
-const store = createStore(RootReducer, initialState)
+const store = configureStore(initialState)
 
 render(
     <Provider store={store}>

@@ -10,7 +10,8 @@ import { renderToString} from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider }  from 'react-redux'
 import Reducer from './reducers'
-import App from './containers/App'
+import App from './containers/AsyncApp'
+import { fetchReddit } from './api/reddit'
 
 const app = Express()
 const PORT = 3000
@@ -19,17 +20,22 @@ app.use(Express.static('static'));
 app.use(handleRender)
 
 function handleRender (req, res) {
-    const store = createStore(Reducer)
+    const params = qs.parse(req.query)['reddit'] || 'reactjs'
 
-    const html = renderToString(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    )
+    fetchReddit(params, apiResult => {
+        const store = createStore(Reducer, apiResult)
 
-    const initialState = store.getState()
+        const html = renderToString(
+            <Provider store={store}>
+                <App />
+            </Provider>
+        )
 
-    res.send(renderFullPage(html, initialState))
+        //const initialState = store.getState()
+        const finalState = store.getState()
+
+        res.send(renderFullPage(html, finalState))
+    })
 }
 
 function renderFullPage(html, initialState) {
