@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
+import Search from '../components/Search'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 
@@ -39,6 +40,7 @@ class AsyncApp extends Component {
         const { selectedReddit, posts, isFetching, lastUpdated } = this.props
         return (
             <div>
+                <Search></Search>
                 <Picker value={selectedReddit}
                         onChange={this.handleChange}
                         options={[ 'reactjs', 'frontend' ]} />
