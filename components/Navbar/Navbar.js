@@ -3,6 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react'
+import { selectReddit } from '../../actions'
 
 export default class Navbar extends Component {
     constructor(props) {
@@ -12,7 +13,9 @@ export default class Navbar extends Component {
 
     keydown (e) {
         if (e.which === 13) {
-            e.preventDefault();
+            e.preventDefault()
+            const reddit = document.getElementById('search').value
+            this.props.dispatch(selectReddit(reddit))
         }
     }
 

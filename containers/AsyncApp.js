@@ -37,13 +37,10 @@ class AsyncApp extends Component {
     }
 
     render() {
-        const { selectedReddit, posts, isFetching, lastUpdated } = this.props
+        const { selectedReddit, posts, isFetching, lastUpdated, dispatch } = this.props
         return (
             <div>
-                <Navbar></Navbar>
-                <Picker value={selectedReddit}
-                        onChange={this.handleChange}
-                        options={[ 'reactjs', 'frontend' ]} />
+                <Navbar dispatch={dispatch}></Navbar>
                 <p>
                     {lastUpdated &&
                     <span>
@@ -66,7 +63,7 @@ class AsyncApp extends Component {
                 }
                 {posts.length > 0 &&
                 <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                    <Posts posts={posts} />
+                    <Posts posts={posts} value={selectedReddit} />
                 </div>
                 }
             </div>
