@@ -32,7 +32,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel'
             }, {
-                test: /\.scss$/,
+                test: /(index).scss$/,
                 loaders: ["style", "css", "sass"]
             }
         ]

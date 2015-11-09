@@ -10,6 +10,7 @@ import { renderToString} from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider }  from 'react-redux'
 import Reducer from './reducers'
+import renderFullPage from './template'
 import App from './containers/AsyncApp'
 import { fetchReddit } from './api/reddit'
 
@@ -36,22 +37,6 @@ function handleRender (req, res) {
 
         res.send(renderFullPage(html, finalState))
     })
-}
-
-function renderFullPage(html, initialState) {
-    return `
-        <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <title>Youfrica TV</title>
-            </head>
-            <body>
-                <div id="root">${html}</div>
-                <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
-                <script src="/bundle.js"></script>
-            </body>
-        </html>
-    `
 }
 
 app.listen(PORT, function () {
