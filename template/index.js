@@ -13,12 +13,13 @@ export default function renderFullPage(html, initialState) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <!--Import Google Icon Font-->
                 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
                 <title> Youfrica TV</title>
             </head>
             <body>
                 <div id="root">${html}</div>
                 <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
-                <script src="/bundle.js"></script>
+                <script src="/dist.js"></script>
                 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
                 <!-- Compiled and minified JavaScript -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>

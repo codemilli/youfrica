@@ -5,9 +5,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+const config = {
     entry: [
         './client.js'
     ],
@@ -39,3 +38,10 @@ module.exports = {
     },
     postcss: [autoprefixer]
 }
+
+if (process.env.NODE_ENV === 'production') {
+    config.output.filename = './static/dist.js';
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+module.exports = config;
