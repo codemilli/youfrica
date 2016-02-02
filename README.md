@@ -1,4 +1,4 @@
-# youfrica
+# youfrica (paused)
 Africa TV with youtube , In South Korea, there was a thing that I literally cannot understand
 
 which is people pay for the Africa TV service.
